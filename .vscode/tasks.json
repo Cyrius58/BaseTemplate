@@ -1,0 +1,274 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // ---- Gestion des versions de langage (auto au chargement du dossier) ----
+    {
+      "label": "🚀 Template : détecter le langage et épurer le projet",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/setup-project.ps1"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      }
+    },
+    {
+      "label": "versions: vérifier",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/check-versions.ps1"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "versions: mettre à jour les outils",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/update-tooling.ps1"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "versions: migrer le code (codemods)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/migrate-code.ps1"
+      ],
+      "problemMatcher": []
+    },
+    // ---- Python ----
+    {
+      "label": "python: test (pytest)",
+      "type": "shell",
+      "command": "pytest",
+      "args": [
+        "-v"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "python: install deps",
+      "type": "shell",
+      "command": "pip install -r requirements-dev.txt",
+      "problemMatcher": []
+    },
+    // ---- Node / Web ----
+    {
+      "label": "node: install deps",
+      "type": "shell",
+      "command": "npm install",
+      "problemMatcher": []
+    },
+    {
+      "label": "node: test",
+      "type": "shell",
+      "command": "npm test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "node: build",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    // ---- C++ ----
+    {
+      "label": "cpp: configure (cmake)",
+      "type": "shell",
+      "command": "cmake -S . -B build",
+      "problemMatcher": []
+    },
+    {
+      "label": "cpp: build (cmake)",
+      "type": "shell",
+      "command": "cmake --build build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "cpp: test (ctest)",
+      "type": "shell",
+      "command": "ctest --test-dir build --output-on-failure",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Dart / Flutter ----
+    {
+      "label": "dart: test",
+      "type": "shell",
+      "command": "dart test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Java ----
+    {
+      "label": "java: build (maven)",
+      "type": "shell",
+      "command": "mvn -q compile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "java: test (maven)",
+      "type": "shell",
+      "command": "mvn -q test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- C# / .NET ----
+    {
+      "label": "dotnet: build",
+      "type": "shell",
+      "command": "dotnet build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$msCompile"
+      ]
+    },
+    {
+      "label": "dotnet: test",
+      "type": "shell",
+      "command": "dotnet test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Go ----
+    {
+      "label": "go: build",
+      "type": "shell",
+      "command": "go build ./...",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "go: test",
+      "type": "shell",
+      "command": "go test ./...",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Rust ----
+    {
+      "label": "rust: build (cargo)",
+      "type": "shell",
+      "command": "cargo build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$rustc"
+      ]
+    },
+    {
+      "label": "rust: test (cargo)",
+      "type": "shell",
+      "command": "cargo test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- PHP ----
+    {
+      "label": "php: install deps (composer)",
+      "type": "shell",
+      "command": "composer install",
+      "problemMatcher": []
+    },
+    {
+      "label": "php: test (phpunit)",
+      "type": "shell",
+      "command": "vendor/bin/phpunit",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Ruby ----
+    {
+      "label": "ruby: install deps (bundler)",
+      "type": "shell",
+      "command": "bundle install",
+      "problemMatcher": []
+    },
+    {
+      "label": "ruby: test (rspec)",
+      "type": "shell",
+      "command": "bundle exec rspec",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Swift ----
+    {
+      "label": "swift: build",
+      "type": "shell",
+      "command": "swift build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "swift: test",
+      "type": "shell",
+      "command": "swift test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    // ---- Qualité de code / hooks ----
+    {
+      "label": "pre-commit: lancer sur tous les fichiers",
+      "type": "shell",
+      "command": "pre-commit run --all-files",
+      "problemMatcher": []
+    }
+  ]
+}

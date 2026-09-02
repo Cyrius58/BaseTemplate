@@ -1,0 +1,61 @@
+version: 2
+# open-pull-requests-limit: 0 désactive la création de PR tant que ce dépôt reste un template
+# non développé. Une fois copié vers un vrai projet actif, retirez cette ligne (ou augmentez la
+# limite) sur les écosystèmes réellement utilisés, et supprimez les autres blocs.
+updates:
+  # Un bloc par écosystème effectivement utilisé dans le projet dérivé.
+  # Supprimez ceux qui ne s'appliquent pas.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 0

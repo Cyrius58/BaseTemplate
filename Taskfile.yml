@@ -1,0 +1,34 @@
+version: "3"
+
+# Alternative cross-plateforme (Windows/macOS/Linux) aux scripts scripts/*.ps1,
+# utile si le projet est partagé avec des contributeurs sans PowerShell.
+# Nécessite PowerShell 7+ (pwsh) installé sur la machine : https://aka.ms/powershell
+# Installation de l'outil "task" : https://taskfile.dev/installation/
+#
+# Usage : task <nom-de-la-tache>   (ex. task check-versions)
+
+tasks:
+  check-versions:
+    desc: Vérifie les versions installées par rapport à .tool-versions
+    cmds:
+      - pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/check-versions.ps1
+
+  update-tooling:
+    desc: Met à jour les toolchains et outils de lint/format du projet
+    cmds:
+      - pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/update-tooling.ps1
+
+  migrate-code:
+    desc: Applique les codemods automatiques (migration de version de langage)
+    cmds:
+      - pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/migrate-code.ps1
+
+  new-feature:
+    desc: "Génère les fichiers Model/View/Controller/Test (usage : task new-feature -- -Name X -Lang python)"
+    cmds:
+      - pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/new-feature.ps1 {{.CLI_ARGS}}
+
+  precommit:
+    desc: Lance tous les hooks pre-commit sur l'ensemble du dépôt
+    cmds:
+      - pre-commit run --all-files

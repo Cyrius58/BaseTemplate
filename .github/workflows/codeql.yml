@@ -1,0 +1,50 @@
+name: CodeQL
+
+# Déclenché manuellement uniquement : ce dépôt est un template sans code source réel
+# (CodeQL échoue sinon, faute de fichiers à analyser/compiler). Une fois ce template
+# copié vers un vrai projet contenant du code, réactivez push/pull_request ci-dessous.
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: ["main", "master"]
+  # pull_request:
+  # schedule:
+  #   - cron: "0 6 * * 1" # tous les lundis à 06h00
+
+jobs:
+  analyze:
+    name: Analyse CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        # Ajoutez/retirez les langages réellement présents dans le projet dérivé.
+        # Langages supportés par CodeQL : https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/
+        language:
+          [
+            "javascript-typescript",
+            "python",
+            "java-kotlin",
+            "csharp",
+            "go",
+            "cpp",
+            "ruby",
+            "swift",
+          ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+
+      - uses: github/codeql-action/autobuild@v3
+
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"

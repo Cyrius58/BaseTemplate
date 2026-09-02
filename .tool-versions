@@ -1,0 +1,16 @@
+# Versions cibles des langages/outils pour ce projet (format inspiré d'asdf : nom version).
+# Sert de référence unique lue par scripts/check-versions.ps1.
+# Mettez à jour ce fichier dès qu'une nouvelle version majeure/mineure doit être adoptée,
+# puis lancez scripts/update-tooling.ps1 et scripts/migrate-code.ps1.
+
+python   3.12
+node     20
+java     21
+dotnet   8.0
+go       1.22
+rust     1.79
+php      8.3
+ruby     3.3
+swift    5.10
+kotlin   2.0
+dart     3.4

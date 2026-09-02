@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---- Python ----
+      - if: hashFiles('requirements-dev.txt') != ''
+        uses: actions/setup-python@v7
+        with: { python-version: "3.12" }
+      - if: hashFiles('requirements-dev.txt') != ''
+        run: pip install -r requirements-dev.txt
+      - if: hashFiles('requirements-dev.txt') != ''
+        run: pytest
+
+      # ---- Node / Web ----
+      - if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v7
+        with: { node-version: "20" }
+      - if: hashFiles('package.json') != ''
+        run: npm ci
+      - if: hashFiles('package.json') != ''
+        run: npm test --if-present
+
+      # ---- Java ----
+      - if: hashFiles('pom.xml') != ''
+        uses: actions/setup-java@v6
+        with: { distribution: "temurin", java-version: "21" }
+      - if: hashFiles('pom.xml') != ''
+        run: mvn -B test
+
+      # ---- C# / .NET ----
+      - if: hashFiles('**/*.csproj') != ''
+        uses: actions/setup-dotnet@v4
+        with: { dotnet-version: "8.0.x" }
+      - if: hashFiles('**/*.csproj') != ''
+        run: dotnet test
+
+      # ---- Go ----
+      - if: hashFiles('go.mod') != ''
+        uses: actions/setup-go@v7
+        with: { go-version: "1.22" }
+      - if: hashFiles('go.mod') != ''
+        run: go test ./...
+
+      # ---- Rust ----
+      - if: hashFiles('Cargo.toml') != ''
+        uses: dtolnay/rust-toolchain@stable
+      - if: hashFiles('Cargo.toml') != ''
+        run: cargo test
+
+      # ---- PHP ----
+      - if: hashFiles('composer.json') != ''
+        uses: shivammathur/setup-php@v2
+        with: { php-version: "8.3" }
+      - if: hashFiles('composer.json') != ''
+        run: composer install --no-interaction && vendor/bin/phpunit
+
+      # ---- Ruby ----
+      - if: hashFiles('Gemfile') != ''
+        uses: ruby/setup-ruby@v1
+        with: { ruby-version: "3.3", bundler-cache: true }
+      - if: hashFiles('Gemfile') != ''
+        run: bundle exec rspec
+
+      # ---- Dart / Flutter ----
+      - if: hashFiles('pubspec.yaml') != ''
+        uses: dart-lang/setup-dart@v1
+      - if: hashFiles('pubspec.yaml') != ''
+        run: dart pub get && dart test
+
+      # ---- C / C++ ----
+      - if: hashFiles('CMakeLists.txt') != ''
+        run: cmake -S . -B build && cmake --build build
+      - if: hashFiles('CMakeLists.txt') != ''
+        run: ctest --test-dir build --output-on-failure

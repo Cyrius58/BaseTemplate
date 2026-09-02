@@ -1,0 +1,57 @@
+{
+  // Recommandations d'extensions par langage.
+  // VSCode proposera automatiquement leur installation à l'ouverture du dossier.
+  "recommendations": [
+    // --- Général / productivité ---
+    "editorconfig.editorconfig",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "yzhang.markdown-all-in-one",
+    "ryanluker.vscode-coverage-gutters",
+    // --- Python ---
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "charliermarsh.ruff",
+    // --- JavaScript / TypeScript / Web ---
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "vitest.explorer",
+    "orta.vscode-jest",
+    "ritwickdey.liveserver",
+    // --- C / C++ ---
+    "ms-vscode.cpptools-extension-pack",
+    "ms-vscode.cmake-tools",
+    "matepek.vscode-catch2-test-adapter",
+    // --- Dart / Flutter ---
+    "dart-code.dart-code",
+    "dart-code.flutter",
+    // --- Java ---
+    "vscjava.vscode-java-pack",
+    "redhat.java",
+    "vscjava.vscode-java-test",
+    "vscjava.vscode-java-debug",
+    "vscjava.vscode-maven",
+    "vscjava.vscode-gradle",
+    // --- C# / .NET ---
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.csharp",
+    // --- Go ---
+    "golang.go",
+    // --- Rust ---
+    "rust-lang.rust-analyzer",
+    "vadimcn.vscode-lldb",
+    // --- PHP ---
+    "bmewburn.vscode-intelephense-client",
+    "xdebug.php-debug",
+    // --- Ruby ---
+    "shopify.ruby-lsp",
+    // --- Swift ---
+    "swiftlang.swift-vscode",
+    // --- Kotlin ---
+    "fwcd.kotlin",
+    // --- Docker / Git (utile pour la plupart des projets) ---
+    "ms-azuretools.vscode-docker"
+  ]
+}

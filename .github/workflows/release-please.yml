@@ -1,0 +1,23 @@
+name: release-please
+
+# Déclenché manuellement uniquement : ce dépôt est un template qui ne sera pas développé
+# lui-même. Une fois copié vers un vrai projet actif, décommentez le déclencheur "push"
+# ci-dessous pour automatiser les releases à partir des commits Conventional Commits.
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: ["main"]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v5
+        with:
+          release-type: simple
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

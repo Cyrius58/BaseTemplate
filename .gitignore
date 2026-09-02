@@ -1,0 +1,95 @@
+# ==== Général / OS ====
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+
+# ==== VSCode (garder la config partagée, ignorer le local) ====
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.history/
+
+# ==== Python ====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ==== Node / Web ====
+node_modules/
+dist/
+build/
+.parcel-cache/
+coverage/
+*.tsbuildinfo
+.npm/
+.eslintcache
+
+# ==== C / C++ ====
+build*/
+out/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ==== Dart / Flutter ====
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+*.g.dart
+*.freezed.dart
+
+# ==== Java / Kotlin (Maven / Gradle) ====
+target/
+.gradle/
+*.class
+*.jar
+!gradle-wrapper.jar
+
+# ==== C# / .NET ====
+bin/
+obj/
+*.user
+
+# ==== Go ====
+/vendor/
+
+# ==== Rust ====
+Cargo.lock
+
+# ==== PHP ====
+/vendor/
+composer.phar
+
+# ==== Ruby ====
+.bundle/
+vendor/bundle/
+
+# ==== Swift ====
+.build/
+.swiftpm/
+
+# ==== Rapports de tests / couverture ====
+test-results/
+coverage-report/

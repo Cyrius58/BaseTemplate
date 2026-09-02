@@ -1,0 +1,129 @@
+{
+  "version": "0.2.0",
+  // Choisissez la configuration adaptée au projet en cours dans le menu déroulant
+  // du panneau "Run and Debug", puis F5 lance automatiquement cette configuration.
+  "configurations": [
+    {
+      "name": "Python: Fichier courant",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Python: Module (src)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Node.js: Fichier courant",
+      "type": "node",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Node.js: npm start",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "start"
+      ],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "C++ (gdb): Lancer",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/app",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "cpp: build (cmake)"
+    },
+    {
+      "name": "Dart/Flutter: Lancer",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart"
+    },
+    {
+      "name": "Chrome: Lancer page web",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5500",
+      "webRoot": "${workspaceFolder}/src"
+    },
+    {
+      "name": "Java: Lancer",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "name": "C# (.NET): Lancer",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/Debug/net8.0/app.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "preLaunchTask": "dotnet: build"
+    },
+    {
+      "name": "Go: Lancer",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}"
+    },
+    {
+      "name": "Rust (lldb): Lancer",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/app",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "rust: build (cargo)"
+    },
+    {
+      "name": "PHP: Écouter Xdebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9003
+    },
+    {
+      "name": "Ruby: Lancer",
+      "type": "rdbg",
+      "request": "launch",
+      "script": "${file}",
+      "askParameters": false
+    },
+    {
+      "name": "Kotlin: Lancer",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "MainKt"
+    },
+    {
+      "name": "Swift: Lancer",
+      "type": "swift",
+      "request": "launch",
+      "program": "${workspaceFolder}/.build/debug/app",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
